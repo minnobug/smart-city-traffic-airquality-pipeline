@@ -1,116 +1,50 @@
-🏙️ 1. Overview
+# 🚦 Traffic + 🌫️ Air Quality Dashboard (Smart City Project)
 
-This project represents a real Smart City data pipeline that collects, processes, and analyzes:
+## 📌 Tổng quan
+Dự án này tập trung vào việc **phân tích mối quan hệ trực tiếp giữa giao thông và chất lượng không khí** trong bối cảnh **Smart City**.  
+Ý tưởng chính:  
+- Lượng xe tăng → PM2.5, CO2 tăng  
+- Kẹt xe → Ô nhiễm không khí tăng theo thời gian thực  
 
-Traffic Data (vehicle count, speed, congestion level)
+Hệ thống giúp hiển thị, cảnh báo và phân tích dữ liệu để hỗ trợ quản lý đô thị thông minh.
 
-Air Quality Data (PM2.5, PM10, CO, NO₂, AQI)
+---
 
-The primary goal is to build a complete, production-like Data Engineering pipeline that shows how traffic affects pollution levels in a city.
+## 🎯 Tính năng chính
+- **Dashboard trực quan**: hiển thị mức độ ô nhiễm theo từng tuyến đường.  
+- **Cảnh báo thời gian thực**: phát hiện và cảnh báo khi mật độ xe tăng dẫn đến khí độc vượt ngưỡng.  
+- **Phân tích nguyên nhân**: thống kê và phân tích ô nhiễm theo giờ cao điểm, hỗ trợ hoạch định chính sách giao thông.  
 
-This project is designed for:
+---
 
-Data Engineering portfolio
+## 🛠️ Kiến trúc hệ thống
+- **Traffic Data**: thu thập từ **Kafka** (streaming real-time).  
+- **Air Quality Data (AQI)**: lấy từ **API bên ngoài** hoặc **mô phỏng dữ liệu**.  
+- **Data Processing**: tích hợp, đồng bộ và phân tích dữ liệu giao thông + chất lượng không khí.  
+- **Visualization**: dashboard hiển thị trực quan, dễ theo dõi.  
 
-Hands-on ETL/ELT practice
+---
 
-Showcasing architecture design, pipelines, analytics & dashboards
+## 📊 Luồng dữ liệu
+1. Kafka nhận dữ liệu giao thông (mật độ xe, tốc độ, tình trạng kẹt xe).  
+2. API/mô phỏng cung cấp dữ liệu AQI (PM2.5, CO2, NOx...).  
+3. Hệ thống phân tích mối quan hệ giữa traffic và AQI.  
+4. Dashboard hiển thị kết quả + cảnh báo thời gian thực.  
 
-🎯 2. Project Objectives
+---
 
-✔ Build an end-to-end, reproducible pipeline
+## 🚀 Hướng dẫn triển khai
+### Yêu cầu
+- Python 3.9+  
+- Apache Kafka  
+- Node.js (cho phần frontend dashboard)  
+- API key (nếu dùng dịch vụ AQI thật)
 
-✔ Apply Data Lake architecture: Bronze → Silver → Gold
+### Cài đặt
+```bash
+# Clone repo
+git clone https://github.com/your-username/traffic-air-quality.git
+cd traffic-air-quality
 
-✔ Automate ingestion & processing with Python
-
-✔ Analyze correlation between traffic and air pollution
-
-✔ Build visual dashboards (Power BI / Grafana)
-
-✔ Demonstrate production-style coding & folder structure
-
-🔧 3. Technologies Used
-
-Purpose	Technologies
-
-Data Ingestion	Python (requests, json, sched)
-
-Processing	Pandas, PyArrow
-
-Storage	Local Data Lake (CSV/Parquet)
-
-Orchestration (optional)	Apache Airflow
-
-Visualization	Power BI / Grafana
-
-Version Control	Git + GitHub
-
-📥 4. Data Sources
-
-Traffic Data APIs
-
-TomTom Traffic
-
-OpenTraffic APIs
-
-Simulated JSON generator
-
-Air Quality APIs
-
-OpenAQ
-
-IQAir AirVisual API
-
-Government AQI open data
-
-⚙️ 5. How to Run the Pipeline
-
-1️⃣ Install dependencies
+# Cài đặt dependencies
 pip install -r requirements.txt
-
-2️⃣ Fetch Traffic Data
-python src/ingestion/fetch_traffic.py
-
-3️⃣ Fetch Air Quality Data
-python src/ingestion/fetch_air_quality.py
-
-4️⃣ Transform & Merge Data
-python src/transformation/clean_merge.py
-
-5️⃣ Run Entire Pipeline
-python src/pipeline/run_pipeline.py
-
-📊 6. Dashboard Insights
-
-The final BI dashboard includes:
-
-Traffic congestion heatmaps
-
-PM2.5 / PM10 pollution trends
-
-Correlation analysis chart
-
-AQI vs Traffic volume scatter plot
-
-Hourly / daily insights
-
-🧪 7. Future Enhancements
-
-Replace Python ingestion with Kafka streaming
-
-Move data lake to cloud (AWS S3 / GCP Storage)
-
-Add dbt for transformation
-
-Build a real-time dashboard with Grafana & TimescaleDB
-
-Deploy Airflow on Docker
-
-👤 8. Author
-
-Le Van Minh
-
-Smart City – Traffic & Air Quality Data Pipeline
-
-Data Engineering Project
